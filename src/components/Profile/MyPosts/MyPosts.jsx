@@ -4,12 +4,18 @@ import classes from './MyPosts.module.css';
 
 const MyPosts = () => {
     return (
-        <div>
-            My posts
+        <div className={classes.postsBlock}>
+           <h3>My posts</h3> 
+            <div>
+                <textarea></textarea>
+            </div>
+            <div>
+                <button>post</button>
+            </div>
             <div className={classes.posts}>
-                <Post massage="Hi, how are you?"/>
-                <Post massage="I'm fine."/>
-                <Post massage="I'm drinking coffee right now."/>
+                <Post massage="Hi, how are you?" />
+                <Post massage="I'm fine." />
+                <Post massage="I'm drinking coffee right now." />
             </div>
         </div>
     );
