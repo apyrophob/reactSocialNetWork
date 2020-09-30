@@ -2,38 +2,54 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Dialogues.module.css';
 
-const DialoguesItem = (props) => {
-    let path = '/dialogue/' + props.id;
+
+function DialoguesItem({ name, id }) {
+    let path = '/dialogue/' + id;
 
     return (
         <div>
-            <NavLink to={path}>{props.name}</NavLink>
+            <NavLink to={path}>{name}</NavLink>
         </div>
     );
-} 
+}
 
-const Message = (props) => {
+const Message = ({ message }) => {
     return (
-        <div className={classes.message}>{props.message}</div>
+        <div className={classes.message1}>{message}</div>
     );
 }
 
 const Dialogues = (props) => {
+    //Data from the server
+    let dialogs = [
+        { id: 1, name: 'Sasha' },
+        { id: 2, name: 'Petya' },
+        { id: 3, name: 'Pasha' },
+        { id: 4, name: 'Artem' },
+        { id: 5, name: 'Dima' },
+    ]
+
+    let messages = [
+        { id: 1, message: 'Hi, how are you?' },
+        { id: 2, message: 'Do you wanna go for a walk?' },
+        { id: 3, message: 'You are stupid bitch' },
+    ]
+    //Mapping data to JSX
+    let dialogselement = dialogs
+        .map( d => <DialoguesItem id={d.id} name={d.name} />,);
+
+    let messageElement = messages
+        .map( m => <Message id={m.id} message={m.message} />);
+
     return (
         <div className={classes.dialogues}>
             <div className={classes.dialoguesItems}>
-                <div className={classes.dialogue}>
-                    <DialoguesItem id='1' name='Dima' />
-                    <DialoguesItem id='2' name='Sasha' />
-                    <DialoguesItem id='3' name='Pasha' />
-                    <DialoguesItem id='4' name='Artem' />
-                    <DialoguesItem id='5' name='Dima' />
+                <div>
+                    { dialogselement }
                 </div>
             </div>
-            <div>
-                <Message message='Hi, how are you?' />
-                <Message message='Do you wanna go for a walk?' />
-                <Message message='You are stupid bitch' />
+            <div className='message'>
+                { messageElement }
             </div>
         </div>
     );

@@ -5,12 +5,13 @@
 
 .dialoguesItems {
     padding: 10px;
+    color:white;
 }
 
-.message {
+.message1 {
     padding: 10px;
 }
 
 .messages .message {
-
+    color:white;
 }
