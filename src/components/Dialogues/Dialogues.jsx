@@ -20,25 +20,11 @@ const Message = ({ message }) => {
 }
 
 const Dialogues = (props) => {
-    //Data from the server
-    let dialogs = [
-        { id: 1, name: 'Sasha' },
-        { id: 2, name: 'Petya' },
-        { id: 3, name: 'Pasha' },
-        { id: 4, name: 'Artem' },
-        { id: 5, name: 'Dima' },
-    ]
-
-    let messages = [
-        { id: 1, message: 'Hi, how are you?' },
-        { id: 2, message: 'Do you wanna go for a walk?' },
-        { id: 3, message: 'You are stupid bitch' },
-    ]
     //Mapping data to JSX
-    let dialogselement = dialogs
+    let dialogselement = props.dialogs
         .map( d => <DialoguesItem id={d.id} name={d.name} />,);
 
-    let messageElement = messages
+    let messageElement = props.messages
         .map( m => <Message id={m.id} message={m.message} />);
 
     return (
