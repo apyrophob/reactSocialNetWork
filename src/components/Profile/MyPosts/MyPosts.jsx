@@ -4,7 +4,7 @@ import classes from './MyPosts.module.css';
 
 const MyPosts = (props) => {
     let postsElement = props.posts
-        .map( p => <Post message={p.message} id={p.id} /> );
+        .map( p => <Post message={p.message} id={p.id} post={p.posts} /> );
 
     return (
         <div className={classes.postsBlock}>
