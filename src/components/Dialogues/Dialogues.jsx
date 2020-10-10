@@ -8,6 +8,7 @@ function DialoguesItem({ name, id }) {
 
     return (
         <div>
+            {/* name - a url witch User can click on / path - for routing */}
             <NavLink to={path}>{name}</NavLink>
         </div>
     );
@@ -21,24 +22,26 @@ const Message = ({ message }) => {
 
 const Dialogues = (props) => {
     //Mapping data to JSX
-    let dialogselement = props.dialogs
-        .map( d => <DialoguesItem id={d.id} name={d.name} />,);
+    let dialogsElement = props.dialogs
+        .map(d => <DialoguesItem id={d.id} name={d.name} />,);
 
     let messageElement = props.messages
-        .map( m => <Message id={m.id} message={m.message} />);
+        .map(m => <Message id={m.id} message={m.message} />);
+
 
     return (
         <div className={classes.dialogues}>
             <div className={classes.dialoguesItems}>
                 <div>
-                    { dialogselement }
+                    {dialogsElement}
                 </div>
-            </div>
-            <div className='message'>
-                { messageElement }
+                <div className='message1'>
+                    {messageElement}
+                </div>
             </div>
         </div>
     );
 };
+
 
 export default Dialogues;
