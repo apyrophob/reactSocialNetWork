@@ -21,11 +21,12 @@ const Message = ({ message }) => {
 }
 
 const Dialogues = (props) => {
+    debugger;
     //Mapping data to JSX
-    let dialogsElement = props.dialogs
+    let dialogsElement = props.state.dialogs
         .map(d => <DialoguesItem id={d.id} name={d.name} />,);
 
-    let messageElement = props.messages
+    let messageElement = props.state.messages
         .map(m => <Message id={m.id} message={m.message} />);
 
 

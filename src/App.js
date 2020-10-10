@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import Navbar from './components/NavBar/NavBar';
-import Profile from './components/Profile/Profile';
-import Dialogues from './components/Dialogues/Dialogues';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
 import { BrowserRouter, Route } from 'react-router-dom';
+import './App.css';
+import Dialogues from './components/Dialogues/Dialogues';
+import Header from './components/Header/Header';
+import Music from './components/Music/Music';
+import Navbar from './components/NavBar/NavBar';
+import News from './components/News/News';
+import Profile from './components/Profile/Profile';
+import Settings from './components/Settings/Settings';
 
 const App = (props) => {
   return (
@@ -17,13 +17,13 @@ const App = (props) => {
         <Navbar />
         <div className='app-wrapper-content'>
           <Route path='/messages'
-            render={ () => <Dialogues
-              dialogs={props.state.dialogs}
-              messages={props.state.messages} />} />
+            render={() => <Dialogues
+              state={props.state.dialogsPage} />} />
           <Route path='/profile'
-            render={ () => <Profile
-              posts={props.state.posts} 
-                addPost={props.addPost} />} />
+            render={() => <Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updatePostText={props.updatePostText} />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />

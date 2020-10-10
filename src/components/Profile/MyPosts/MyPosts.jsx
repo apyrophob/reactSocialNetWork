@@ -6,24 +6,27 @@ import { createRef } from 'react';
 const MyPosts = (props) => {
     const postsElement = props.posts
         .map(p => <Post message={p.message} id={p.id} post={p.posts} />);
-    
-    const newPostElement = React.createRef();
-    
-        const addPost = () => {
-        const text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = '';
-    }
 
+    const newPostElement = React.createRef();
+
+    const addPost = () => {
+        props.addPost();
+    };
+
+    const onPostChange = () => {
+        const text = newPostElement.current.value;
+        props.updatePostText(text);
+    };
 
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <textarea ref={ newPostElement }></textarea>
+                <textarea onChange={onPostChange} ref={newPostElement}
+                    value={props.newPostText} />
             </div>
             <div>
-                <button onClick={ addPost }>post</button>
+                <button onClick={addPost}>post</button>
             </div>
             <div className={classes.posts}>
                 {postsElement}
