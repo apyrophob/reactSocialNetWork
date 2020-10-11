@@ -9,8 +9,7 @@ import * as serviceWorker from './serviceWorker';
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} addPost={store.addPost.bind(store)}
-        updatePostText={store.updatePostText.bind(store)} />
+      <App state={state} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>,
     document.getElementById('root')
   );
